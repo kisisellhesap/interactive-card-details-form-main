@@ -101,6 +101,7 @@ background-image: url(./images/bg-card-back.png);
 }
 #front-name {
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 body {

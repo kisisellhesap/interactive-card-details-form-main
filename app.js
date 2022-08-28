@@ -10,6 +10,9 @@ const cardMM = document.querySelector("#card-mm");
 const cardYY = document.querySelector("#card-yy");
 const cardCvc = document.querySelector("#card-cvc");
 
+const thanks = document.querySelector("#thanks");
+thanks.style.display = "none";
+
 confirmBtn.addEventListener("click", function (event) {
   if (cardName.value == "") {
     errName.textContent = "Can't be blank";
@@ -31,6 +34,22 @@ confirmBtn.addEventListener("click", function (event) {
     errCvc.textContent = "Can't be blank";
     cardCvc.style.border = "1px solid var(--Red)";
   }
+  if (cardName.value.length != 19) {
+    errNumb.textContent = "Wrong Format";
+    cardNumb.style.border = "1px solid var(--Red)";
+  }
+
+  if (
+    cardName.value != "" &&
+    cardNumb.value != "" &&
+    cardMM.value != "" &&
+    cardYY.value != "" &&
+    cardCvc.value != "" &&
+    cardNumb.value.length == 19
+  ) {
+    thanks.style.display = "flex";
+    document.querySelector("#form").style.display = "none";
+  }
 
   setTimeout(() => {
     errName.textContent = "";
@@ -47,7 +66,20 @@ confirmBtn.addEventListener("click", function (event) {
 
     errCvc.textContent = "";
     cardCvc.style.border = "1px solid rgba(0, 0, 0, .3)";
-  }, 2500);
+  }, 1000);
+  cardName.value = "";
+  cardNumb.value = "";
+  cardMM.value = "";
+  cardYY.value = "";
+  cardCvc.value = "";
+  document.querySelector("#front-name").textContent = "JANE APPLESSED";
+  document.querySelector("#front-number").textContent = "0000 0000 0000 0000";
+
+  document.querySelector("#m").textContent = "00";
+
+  document.querySelector("#y").textContent = "00";
+
+  document.querySelector("#back-cvv").textContent = "000";
 
   event.preventDefault();
 });
@@ -114,3 +146,8 @@ function special(e) {
   if (x >= 48 && x <= 57) return true;
   else return false;
 }
+
+document.querySelector("#contiune").addEventListener("click", function () {
+  thanks.style.display = "none";
+  document.querySelector("#form").style.display = "flex";
+});
