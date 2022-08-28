@@ -10,11 +10,7 @@ const cardMM = document.querySelector("#card-mm");
 const cardYY = document.querySelector("#card-yy");
 const cardCvc = document.querySelector("#card-cvc");
 
-console.log(confirmBtn);
-
 confirmBtn.addEventListener("click", function (event) {
-  console.log(event);
-
   if (cardName.value == "") {
     errName.textContent = "Can't be blank";
     cardName.style.border = "1px solid var(--Red)";
@@ -57,7 +53,6 @@ confirmBtn.addEventListener("click", function (event) {
 });
 
 cardName.addEventListener("input", function () {
-  console.log(cardName.value);
   let name = cardName.value;
   document.querySelector("#front-name").textContent = name.toUpperCase();
 
@@ -69,15 +64,11 @@ cardName.addEventListener("input", function () {
 });
 
 cardNumb.addEventListener("input", function () {
-  console.log(cardNumb.value[3]);
-  console.log(cardNumb.value.length);
-
   if (
     cardNumb.value.length == 4 ||
     cardNumb.value.length == 9 ||
     cardNumb.value.length == 14
   ) {
-    console.log("koy");
     cardNumb.value += " ";
   }
 
@@ -97,7 +88,6 @@ cardMM.addEventListener("input", function () {
 });
 
 cardYY.addEventListener("input", function () {
-  console.log(cardYY.value.length);
   if (cardYY.value.length === 0) {
     document.querySelector("#y").textContent = "00";
   } else {
